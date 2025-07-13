@@ -3,14 +3,22 @@ import { Clock, BookOpen } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function Component() {
+interface Props {
+  title: string;
+  duration: number | string;
+  lessons: number;
+  image: string;
+}
+
+export default function Component({ title, duration, lessons, image }: Props) {
+  console.log(image);
   return (
     <Link href="/course/1">
       <Card className="w-full overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-white border-gray-200 cursor-pointer">
         <CardHeader className="p-0">
           <div className="relative">
             <Image
-              src="/placeholder.svg?height=200&width=400"
+              src={image}
               alt="Course thumbnail"
               className="w-full h-48 object-cover"
               width={200}
@@ -22,18 +30,18 @@ export default function Component() {
         <CardContent className="p-6 space-y-4">
           <div className="space-y-2">
             <h3 className="font-semibold text-lg text-gray-900 line-clamp-2 leading-tight">
-              Complete Web Development Bootcamp 2024
+              {title}
             </h3>
           </div>
 
           <div className="flex items-center justify-between text-sm text-gray-500">
             <div className="flex items-center space-x-1">
               <Clock className="h-4 w-4" />
-              <span>42 hours</span>
+              <span> {duration}hours</span>
             </div>
             <div className="flex items-center space-x-1">
               <BookOpen className="h-4 w-4" />
-              <span>156 lessons</span>
+              <span>{lessons} lessons</span>
             </div>
           </div>
         </CardContent>

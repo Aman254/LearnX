@@ -36,6 +36,7 @@ const Navbar = () => {
           <LogIn className="w-4 h-4" />
           Login
         </Button>
+        <MobileNavigation />
       </div>
     </nav>
   );
