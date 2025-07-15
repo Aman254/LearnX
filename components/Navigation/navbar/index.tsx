@@ -1,12 +1,13 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { LogIn, Search } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 import MobileNavigation from "./MobileNavigation";
+import { SocialAuthForm } from "@/components/Forms/SocialAuthForm";
+import { auth } from "@/auth";
+import LogoutButton from "@/components/LogoutButton";
 
-const Navbar = () => {
+const Navbar = async () => {
+  const session = await auth();
+
   return (
     <nav className="border-b border-gray-200 px-6 py-4">
       <div className="flex items-center justify-between">
@@ -20,23 +21,22 @@ const Navbar = () => {
           />
         </Link>
 
-        {/* <div className="relative">
-          <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
-          <Input
-            placeholder="Search for a course"
-            className="pl-10 w-80 border-gray-200 focus:border-gray-400"
-          />
-        </div> */}
-        <p>Global Search</p>
-        <Button
-          variant="ghost"
-          // onClick={() => setShowAuthModal(true)}
-          className="flex items-center gap-2 text-gray-700 hover:text-gray-900 cursor-pointer"
-        >
-          <LogIn className="w-4 h-4" />
-          Login
-        </Button>
-        <MobileNavigation />
+        <div className="flex-1 flex justify-center">
+          <p className="text-gray-600">Global Search</p>
+        </div>
+
+        <div className="flex items-center space-x-4">
+          {session?.user ? (
+            <LogoutButton
+              name={session.user.name}
+              email={session.user.email}
+              image={session.user.image}
+            />
+          ) : (
+            <SocialAuthForm />
+          )}
+          <MobileNavigation />
+        </div>
       </div>
     </nav>
   );

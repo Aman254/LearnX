@@ -11,7 +11,6 @@ interface Props {
 }
 
 export default function Component({ title, duration, lessons, image }: Props) {
-  console.log(image);
   return (
     <Link href="/course/1">
       <Card className="w-full overflow-hidden transition-all duration-300 hover:shadow-lg hover:-translate-y-1 bg-white border-gray-200 cursor-pointer">
@@ -37,7 +36,7 @@ export default function Component({ title, duration, lessons, image }: Props) {
           <div className="flex items-center justify-between text-sm text-gray-500">
             <div className="flex items-center space-x-1">
               <Clock className="h-4 w-4" />
-              <span> {duration}hours</span>
+              <span> {duration}</span>
             </div>
             <div className="flex items-center space-x-1">
               <BookOpen className="h-4 w-4" />

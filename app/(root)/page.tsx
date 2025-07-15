@@ -1,6 +1,7 @@
+import { auth } from "@/auth";
 import CourseCard from "@/components/Card/CourseCard";
 
-const Home = () => {
+const Home = async () => {
   const courses = [
     {
       name: "Digital Marketing Essentials",
@@ -64,7 +65,7 @@ const Home = () => {
       ],
     },
     {
-      name: "Financial Literacy & Personal Finance",
+      name: "Financial Literacy & Personal",
       image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f",
       duration: "4 weeks",
       lessons: [
@@ -75,7 +76,8 @@ const Home = () => {
       ],
     },
   ];
-
+  const session = await auth();
+  console.log(session);
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 py-12 px-4">
       <div className="max-w-7xl mx-auto">
