@@ -1,4 +1,3 @@
-import { auth } from "@/auth";
 import CourseCard from "@/components/Card/CourseCard";
 
 const Home = async () => {
@@ -64,6 +63,7 @@ const Home = async () => {
         { title: "Ethical Hacking Concepts", duration: "1 week" },
       ],
     },
+
     {
       name: "Financial Literacy & Personal",
       image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f",
@@ -75,13 +75,36 @@ const Home = async () => {
         { title: "Retirement & Long-Term Planning", duration: "1 week" },
       ],
     },
+    {
+      name: "Introduction to Data Science",
+      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f",
+      duration: "6 weeks",
+      lessons: [
+        { title: "What is Data Science?", duration: "1 week" },
+        { title: "Data Wrangling with Python", duration: "1 week" },
+        { title: "Data Visualization", duration: "1 week" },
+        { title: "Exploratory Data Analysis", duration: "1 week" },
+        { title: "Machine Learning Basics", duration: "1 week" },
+        { title: "Final Project", duration: "1 week" },
+      ],
+    },
+    {
+      name: "Frontend Web Development",
+      image: "https://images.unsplash.com/photo-1526378722484-df4a1b1794a0",
+      duration: "5 weeks",
+      lessons: [
+        { title: "HTML & CSS Foundations", duration: "1 week" },
+        { title: "JavaScript Essentials", duration: "1 week" },
+        { title: "Responsive Design", duration: "1 week" },
+        { title: "Introduction to React", duration: "1 week" },
+        { title: "Deploying Your Site", duration: "1 week" },
+      ],
+    },
   ];
-  const session = await auth();
-  console.log(session);
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 py-12 px-4">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-slate-100 py-8 ">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           {courses.map((course) => (
             <CourseCard
               key={course.name}
